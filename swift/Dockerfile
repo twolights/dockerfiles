@@ -2,7 +2,7 @@ FROM ubuntu:15.10
 MAINTAINER Evan Chen <twolights@gmail.com>
 
 RUN apt-get update -y ; \
-    apt-get install -y git build-essential zsh make wget clang libicu-dev libssl-dev libxml2-dev ; \
+    apt-get install -y git build-essential zsh make wget clang libicu-dev libssl-dev libxml2-dev libpython2.7-dev ; \
     wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import - ; \
     cd /root ; \
     wget 'https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-ubuntu15.10.tar.gz' ; \
@@ -14,4 +14,4 @@ RUN apt-get update -y ; \
     else echo "Swift source signature validation failed!" ; \
     fi
 
-ENTRYPOINT swiftc
+ENTRYPOINT ["swift"]
