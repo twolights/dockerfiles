@@ -1,8 +1,8 @@
-FROM ubuntu:15.10
+FROM twolights/base:latest
 MAINTAINER Evan Chen <twolights@gmail.com>
 
 RUN apt-get update -y ; \
-    apt-get install -y build-essential make wget clang libicu-dev libssl-dev libxml2-dev libpython2.7-dev ; \
+    apt-get install -y clang libicu-dev libssl-dev libxml2-dev libpython2.7-dev ; \
     wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import - ; \
     cd /root ; \
     wget 'https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-ubuntu15.10.tar.gz' ; \
