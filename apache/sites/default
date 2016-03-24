@@ -1,0 +1,32 @@
+# vim: syntax=apache
+# ProxyPassMatch ^/(.*\.php)$ fcgi://php5:9000/www/root/$1
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /www/root
+    DirectoryIndex index.php
+
+    <Directory /www/root>
+        Options FollowSymLinks MultiViews
+        AllowOverride FileInfo Options
+        Require all granted
+    </Directory>
+
+    ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://php5:9000/www/root/$1
+
+    # ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+    # <Directory "/usr/lib/cgi-bin">
+    # 	AllowOverride None
+    # 	Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+    # 	Order allow,deny
+    # 	Allow from all
+    # </Directory>
+
+    ErrorLog logs/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog logs/access.log combined
+</VirtualHost>
