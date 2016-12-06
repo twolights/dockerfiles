@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER Evan Chen <twolights@gmail.com>
 
 RUN apk add --update vim wget git zsh bash ; \
